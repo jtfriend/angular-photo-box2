@@ -1,0 +1,9 @@
+
+<h2>My Photos</h2>
+<ul class="photos">
+  <li *ngFor="let photo of photos">
+    <a routerLink="/detail/{{photo.id}}">
+      <span class="badge">{{photo.id}}</span> {{photo.title}}
+    </a>
+  </li>
+</ul>

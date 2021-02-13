@@ -1,0 +1,8 @@
+<h3>Top Photos</h3>
+<div class="grid grid-pad">
+  <a *ngFor="let photo of photos" class="col-1-4" routerLink="/detail/{{photo.id}}">
+    <div class="module photo">
+      <h4>{{photo.title}}</h4>
+    </div>
+  </a>
+</div>
