@@ -1,18 +1,10 @@
 <h3>Top Photos</h3>
-<div class="album-box">
-  <a *ngFor="let photo of photos" routerLink="/detail/{{photo.id}}">
-    <div class="photo-item">
+<div class="album-title-box">
+  <div class="album-item" *ngFor="let photo of albums" routerLink="../../{{photo.id}}/photos"> 
+    <div class="album-item-words">
       <h4>{{photo.title | slice:0:5}}</h4>
     </div>
-  </a>
-</div>
-
-<div class="album-box">
-  <a *ngFor="let photo of photos" routerLink="/detail/{{photo.id}}">
-  <div class="photo-item">
-    <img src="{{photo.thumbnailUrl}}" class="photo">
   </div>
-  </a>
 </div>
 
 <div class="photo-box">

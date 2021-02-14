@@ -6,11 +6,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { PhotoDetailComponent } from './photo-detail/photo-detail.component';
 
 const routes: Routes = [
-  { path: 'photos', component: PhotosComponent},
-  { path: 'dashboard', component: DashboardComponent },
-  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+  { path: '', redirectTo: '/dashboard/1/photos', pathMatch: 'full' },
   { path: 'detail/:id', component: PhotoDetailComponent },
-  { path: 'dashboard/:id/photos', component: DashboardComponent },
+  { path: 'dashboard/:id/photos', component: DashboardComponent }
 ];
 
 @NgModule({

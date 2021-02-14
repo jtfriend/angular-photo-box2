@@ -2,6 +2,8 @@
 
   <h2>{{photo.title | uppercase}} Details</h2>
   <div><span>id: </span>{{photo.id}}</div>
+  <div><span>albumId: </span>{{photo.albumId}}</div>
+  
   <div>
     <label>name:
       <input [(ngModel)]="photo.title" placeholder="name"/>
