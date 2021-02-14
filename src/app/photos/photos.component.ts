@@ -24,7 +24,7 @@ export class PhotosComponent implements OnInit {
 
   getPhotos(): void {
     this.photoService.getPhotos()
-      .subscribe(photos => this.photos = photos);
+      .subscribe(photos => this.photos = photos.slice(0, 10));
   }
 
 }

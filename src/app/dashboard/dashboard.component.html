@@ -1,8 +1,24 @@
 <h3>Top Photos</h3>
-<div class="grid grid-pad">
-  <a *ngFor="let photo of photos" class="col-1-4" routerLink="/detail/{{photo.id}}">
-    <div class="module photo">
-      <h4>{{photo.title}}</h4>
+<div class="album-box">
+  <a *ngFor="let photo of photos" routerLink="/detail/{{photo.id}}">
+    <div class="photo-item">
+      <h4>{{photo.title | slice:0:5}}</h4>
     </div>
+  </a>
+</div>
+
+<div class="album-box">
+  <a *ngFor="let photo of photos" routerLink="/detail/{{photo.id}}">
+  <div class="photo-item">
+    <img src="{{photo.thumbnailUrl}}" class="photo">
+  </div>
+  </a>
+</div>
+
+<div class="photo-box">
+  <a *ngFor="let photo of albumPhotos" routerLink="/detail/{{photo.id}}">
+  <div class="photo-item">
+    <img src="{{photo.thumbnailUrl}}" class="photo">
+  </div>
   </a>
 </div>

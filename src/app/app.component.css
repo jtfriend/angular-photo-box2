@@ -44,3 +44,20 @@ nav a:hover {
 nav a.active {
   color: #039be5;
 }
+
+.photo-box {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  padding: 10px;
+}
+
+.photo-item {
+  padding: 20px;
+  font-size: 12px;
+  text-align: center;
+  width:20%
+}
+
+.photo {
+  width:20%;
+}

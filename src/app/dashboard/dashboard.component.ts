@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+
 import { Photo } from '../photo';
+import { Album } from '../album'; 
 import { PhotoService } from '../photo.service';
 
 @Component({
@@ -9,15 +12,33 @@ import { PhotoService } from '../photo.service';
 })
 export class DashboardComponent implements OnInit {
   photos: Photo[] = [];
+  albums : Album[] = [];
+  albumPhotos : Photo[] = [];
 
-  constructor(private photoService: PhotoService) { }
+  constructor(
+    private photoService: PhotoService,
+    private route : ActivatedRoute
+  ) { }
 
   ngOnInit() {
     this.getPhotos();
+    this.getAlbums();
+    this.getPhotosFromAlbum();
   }
 
   getPhotos(): void {
     this.photoService.getPhotos()
       .subscribe(photos => this.photos = photos.slice(1, 5));
+  }
+
+  getAlbums(): void {
+    this.photoService.getAlbums()
+      .subscribe(albums => this.albums = albums.slice(1, 5));
+  }
+
+  getPhotosFromAlbum(): void {
+    const id = +this.route.snapshot.paramMap.get('id')!;
+    this.photoService.getPhotosFromAlbum(id)
+      .subscribe(albumPhotos => this.albumPhotos = albumPhotos);
   }
 }
