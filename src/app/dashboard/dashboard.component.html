@@ -1,11 +1,13 @@
 <h3>Top Photos</h3>
 <div class="album-title-box">
   <div class="album-item" *ngFor="let photo of albums" routerLink="../../{{photo.id}}/photos"> 
-    <div class="album-item-words">
+    <div class="album-item-words" (click)="getPhotosFromAlbum(photo.id)">
       <h4>{{photo.title | slice:0:5}}</h4>
     </div>
   </div>
 </div>
+
+
 
 <div class="photo-box">
   <a *ngFor="let photo of albumPhotos" routerLink="/detail/{{photo.id}}">

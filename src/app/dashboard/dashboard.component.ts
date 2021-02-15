@@ -21,9 +21,8 @@ export class DashboardComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getPhotos();
     this.getAlbums();
-    this.getPhotosFromAlbum();
+    this.getPhotosFromAlbum(1);
   }
 
   getPhotos(): void {
@@ -36,8 +35,7 @@ export class DashboardComponent implements OnInit {
       .subscribe(albums => this.albums = albums.slice(1, 5));
   }
 
-  getPhotosFromAlbum(): void {
-    const id = +this.route.snapshot.paramMap.get('id')!;
+  getPhotosFromAlbum(id:number): void {
     this.photoService.getPhotosFromAlbum(id)
       .subscribe(albumPhotos => this.albumPhotos = albumPhotos);
   }
