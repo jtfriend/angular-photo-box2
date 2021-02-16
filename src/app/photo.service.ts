@@ -76,6 +76,11 @@ export class PhotoService {
     );
   }
 
+  // getAlbumSize(): Observable<any[]> {
+  //   var albums = this.http.get<Album[]>(this.albumsUrl);
+  //   return albums.length;
+  // }
+
   /** GET hero by id. Will 404 if id not found */
   getAlbum(id: number): Observable<Album> {
     const url = `${this.albumsUrl}/${id}`;

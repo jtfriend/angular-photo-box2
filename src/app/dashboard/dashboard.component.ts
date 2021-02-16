@@ -13,7 +13,13 @@ import { PhotoService } from '../photo.service';
 export class DashboardComponent implements OnInit {
   photos: Photo[] = [];
   albums : Album[] = [];
+  dashAlbums : Album[] = [];
   albumPhotos : Photo[] = [];
+  totalAlbumsValue = 0;
+  i=0;
+  j=4;
+  startOfNextSet = 0;
+  endOfNextSet = 0;
 
   constructor(
     private photoService: PhotoService,
@@ -27,12 +33,39 @@ export class DashboardComponent implements OnInit {
 
   getPhotos(): void {
     this.photoService.getPhotos()
-      .subscribe(photos => this.photos = photos.slice(1, 5));
+      .subscribe(
+        photos => this.photos = photos.slice(0, 4)
+      );
   }
 
   getAlbums(): void {
     this.photoService.getAlbums()
-      .subscribe(albums => this.albums = albums.slice(1, 5));
+      .subscribe(albums => {
+        this.albums = albums.slice(0,4);
+        this.totalAlbumsValue = albums.length;
+      });
+  }
+
+  getPreviousAlbums(): void {
+    if(!(this.i-4 < 0)) {
+      this.startOfNextSet = this.i-4;
+      this.endOfNextSet = this.j-4;
+      this.photoService.getAlbums()
+      .subscribe(albums => this.albums = albums.slice(this.startOfNextSet, this.endOfNextSet));
+      this.i = this.startOfNextSet;
+      this.j = this.endOfNextSet;
+    }
+  }
+
+  getNextAlbums(): void {
+    if (!(this.i > (this.totalAlbumsValue-4-1))) {
+      this.startOfNextSet = this.i+4;
+      this.endOfNextSet = this.j+4;
+      this.photoService.getAlbums()
+      .subscribe(albums => this.albums = albums.slice(this.startOfNextSet, this.endOfNextSet));
+      this.i = this.startOfNextSet;
+      this.j = this.endOfNextSet;
+    }
   }
 
   getPhotosFromAlbum(id:number): void {

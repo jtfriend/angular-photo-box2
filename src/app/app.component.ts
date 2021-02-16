@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
+import { ActivatedRoute } from '@angular/router';
+
+import { PhotoService } from './photo.service'
 import { Photo} from './photo';
+import { Album } from './album';
 
 @Component({
   selector: 'app-root',
@@ -9,13 +13,24 @@ import { Photo} from './photo';
 })
 export class AppComponent {
   title = 'Photo Box';
-  photo!: Photo;
 
-  constructor(private http:HttpClient) {}
+  albums : Album[] = [];
+  albumPhotos : Photo[] = [];
+
+  constructor(
+    private photoService: PhotoService,
+  ) { }
 
   ngOnInit() {
-    this.http.get<Photo>('https://jsonplaceholder.typicode.com/photos').subscribe(data => {
-        this.photo = data;
-    })        
+  }
+
+  getAlbums(): void {
+    this.photoService.getAlbums()
+      .subscribe(albums => this.albums = albums.slice(0, 4));
+  }
+
+  getPhotosFromAlbum(id:number): void {
+    this.photoService.getPhotosFromAlbum(id)
+      .subscribe(albumPhotos => this.albumPhotos = albumPhotos);
   }
 }

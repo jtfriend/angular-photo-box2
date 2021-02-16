@@ -1,17 +1,22 @@
-<h3>Top Photos</h3>
-<div class="album-title-box">
-  <div class="album-item" *ngFor="let photo of albums" routerLink="../../{{photo.id}}/photos"> 
-    <div class="album-item-words" (click)="getPhotosFromAlbum(photo.id)">
-      <h4>{{photo.title | slice:0:5}}</h4>
+<h1>Albums</h1>
+<div class="albums-box-box">
+  <button (click)="getPreviousAlbums()">BACK</button>
+  <div class="album-title-box">
+    <div class="album-item" *ngFor="let photo of albums" routerLink="../../{{photo.id}}/photos"> 
+      <div class="album-item-words" (click)="getPhotosFromAlbum(photo.id)">
+        <h4>Album : {{photo.id}}</h4>
+      </div>
     </div>
   </div>
+  <button (click)="getNextAlbums()">NEXT</button>
 </div>
-
-
+<h2>Photos</h2>
 
 <div class="photo-box">
   <a *ngFor="let photo of albumPhotos" routerLink="/detail/{{photo.id}}">
   <div class="photo-item">
+    <h4>Album : {{photo.albumId}}</h4>
+    <h4>Photo : {{photo.id}}</h4>
     <img src="{{photo.thumbnailUrl}}" class="photo">
   </div>
   </a>
