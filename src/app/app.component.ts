@@ -24,6 +24,10 @@ export class AppComponent {
   ngOnInit() {
   }
 
+  reloadPage() {
+    window.location.href = "/dashboard/1/photos"; 
+  }
+
   getAlbums(): void {
     this.photoService.getAlbums()
       .subscribe(albums => this.albums = albums.slice(0, 4));
