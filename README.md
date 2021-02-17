@@ -1,5 +1,7 @@
 # AngularPhotoBox2
 
+This project was created after being requested to show front development skills for a job opportunity. After having an ok stab at it I produced quite little and wasn't especially impressed. After then doing the online video interview I failed to get the job. I did however get great feedback which has spurred me on the finish off the requested app.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.1.2.
 
 ## Development server
